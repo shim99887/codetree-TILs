@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 public class Main {
 
     //6
-    static String testcase = "1000000";
+    static String testcase = "137686";
 
     static int n;
     static int[] memo;
@@ -19,34 +19,25 @@ public class Main {
 
         memo = new int[n + 2];
 
-        solve(n, 0);
+        for(int i=2; i <= n; i++){
+            int min = Integer.MAX_VALUE;
 
-        System.out.println(memo[1]);
-    }
-
-    static void solve(int number, int cnt){
-        if(number <= 0){
-            return;
-        }
-        if(number == 1){
-            if(memo[number] == 0){
-                memo[number] = cnt;
-            } else {
-                memo[number] = Math.min(memo[number], cnt);
+            if(i % 2 == 0 && min > memo[i / 2] + 1){
+                min = memo[i / 2] + 1;
             }
-            return;
+
+            if(i % 3 == 0 && min > memo[i / 3] + 1){
+                min = memo[i / 3] + 1;
+            }
+
+            if(min > memo[i-1] + 1){
+                min = memo[i - 1] + 1;
+            }
+
+            memo[i] = min;
         }
 
-        if(memo[number] > 0 && memo[number] < cnt){
-            return;
-        }
-
-        if(number >= 3 && number % 3 == 0){
-            solve(number / 3, cnt + 1);
-        } else if(number >= 2 && number % 2 == 0){
-            solve(number / 2, cnt + 1);
-        } else {
-            solve(number - 1, cnt + 1);
-        }
+        System.out.println(memo[n]);
     }
+
 }
