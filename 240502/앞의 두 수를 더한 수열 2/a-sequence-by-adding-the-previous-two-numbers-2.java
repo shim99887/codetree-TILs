@@ -28,6 +28,7 @@ public class Main {
             return memo[depth];
         }
 
-        return fibo(depth - 1) + fibo(depth - 2);
+        memo[depth] = fibo(depth - 1) + fibo(depth - 2);
+        return memo[depth];
     }
 }
