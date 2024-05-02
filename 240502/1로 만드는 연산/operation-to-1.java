@@ -4,7 +4,9 @@ import java.io.StringReader;
 import java.math.BigDecimal;
 
 public class Main {
-    static String testcase = "9";
+
+    //6
+    static String testcase = "1000000";
 
     static int n;
     static int[] memo;
@@ -41,12 +43,10 @@ public class Main {
 
         if(number >= 3 && number % 3 == 0){
             solve(number / 3, cnt + 1);
-        }
-
-        if(number >= 2 && number % 2 == 0){
+        } else if(number >= 2 && number % 2 == 0){
             solve(number / 2, cnt + 1);
+        } else {
+            solve(number - 1, cnt + 1);
         }
-
-        solve(number - 1, cnt + 1);
     }
 }
