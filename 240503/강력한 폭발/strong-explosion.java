@@ -5,11 +5,6 @@ import java.math.BigDecimal;
 import java.util.*;
 
 public class Main {
-    static String testcase = "4\n" +
-            "0 1 0 0\n" +
-            "0 1 0 0\n" +
-            "0 1 0 0\n" +
-            "0 1 0 0\n";
 
     static int n, boomCnt, max;
     static int[][] map, bombMap;
@@ -74,8 +69,8 @@ public class Main {
                     }
                 }
                 for (int j = 0; j < 2; j++) {
-                    if (isIn(fr + j + 1, fc) && bombMap[fr + 1 + j][fc] == 0) {
-                        bombMap[fr + 1 + j][fc] = 1;
+                    if (isIn(fr - j - 1, fc) && bombMap[fr - 1 - j][fc] == 0) {
+                        bombMap[fr - 1 - j][fc] = 1;
                         answer++;
                     }
                 }
